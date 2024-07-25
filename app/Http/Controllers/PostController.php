@@ -14,4 +14,12 @@ class PostController extends Controller
         
         return view("posts.index")->with(['posts' => $post->getPaginateByLimit(1)]);
     }
+    
+    public function show(Post $post)
+    {
+        //変数の中身の確認
+        //dd($post);
+        //'post'はbladeファイルで使用する変数。中身は$post(ID=1のPostインスタンス)
+        return view("posts.show")->with(['post' => $post]);
+    }
 }
