@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 
 class PostController extends Controller
@@ -30,7 +31,7 @@ class PostController extends Controller
         return view("posts.create");
     }
     
-    public function store(Request $request, Post $post)
+    public function store(Post $post, PostRequest $request)
     {
         //変数の中身の確認
         //dd($request->all());
