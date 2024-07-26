@@ -22,4 +22,11 @@ class PostController extends Controller
         //'post'はbladeファイルで使用する変数。中身は$post(ID=1のPostインスタンス)
         return view("posts.show")->with(['post' => $post]);
     }
+    
+    public function create(Post $post)
+    {
+        //変数の中身の確認
+        //dd($post);
+        return view("posts.create");
+    }
 }
