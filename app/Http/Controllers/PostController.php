@@ -29,4 +29,15 @@ class PostController extends Controller
         //dd($post);
         return view("posts.create");
     }
+    
+    public function store(Request $request, Post $post)
+    {
+        //変数の中身の確認
+        //dd($request->all());
+        $input = $request['post']; //postをキーに持つリクエストパラメータを取得。キーはformタグ内のname属性を一致
+        //fill関数とsave関数でSQLのデータ取得・追加ができる(fill関数+save関数はcreate関数とほぼ同じ)
+        $post->fill($input)->save(); //fillを使うことで空だったPostインスタンスのプロパティを受け取ったキーごとに上書きできる(fillableに定義されもののみ)
+        //$post->create($input);
+        return redirect('/posts/' . $post->id); //保存したpostのIDを含んだURLにリダイレクト(画面遷移)
+    }
 }

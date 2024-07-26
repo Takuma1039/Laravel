@@ -14,7 +14,7 @@
             </div>
             <div class="body">
                 <h2>Body</h2>
-                <textarea name="post[body]" placeholser="今日も一日お疲れ様でした。"></textarea>　<!--長い文章や改行を許容-->
+                <textarea name="post[body]" placeholder="今日も一日お疲れ様でした。"></textarea>　<!--長い文章や改行を許容-->
             </div>
             <input type="submit" value="store"/> <!--クリックしたときにsubmitが含まれるformに対して送信のリクエストが行われる-->
         </form>

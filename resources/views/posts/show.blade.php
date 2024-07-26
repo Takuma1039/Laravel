@@ -9,7 +9,7 @@
     </head>
     <body>
         <h1 class="title">
-            {{ $post->title }};
+            {{ $post->title }}
         </h1>
         <div class="content">
             <div class="content_post">

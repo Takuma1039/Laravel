@@ -18,4 +18,5 @@ Route::get('/', [PostController::class, 'index']);
 Route::get('/posts/create', [PostController::class, 'create']);
 ///posts/{post}にGetリクエストが来たら、PostControllerのshowメソッドを実行する
 Route::get('/posts/{post}', [PostController::class, 'show']);
+Route::post('/posts', [PostController::class, 'store']);
 
