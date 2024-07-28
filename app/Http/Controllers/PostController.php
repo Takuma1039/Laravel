@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 
 class PostController extends Controller
@@ -21,5 +22,23 @@ class PostController extends Controller
         //dd($post);
         //'post'はbladeファイルで使用する変数。中身は$post(ID=1のPostインスタンス)
         return view("posts.show")->with(['post' => $post]);
+    }
+    
+    public function create(Post $post)
+    {
+        //変数の中身の確認
+        //dd($post);
+        return view("posts.create");
+    }
+    
+    public function store(Post $post, PostRequest $request)
+    {
+        //変数の中身の確認
+        //dd($request->all());
+        $input = $request['post']; //postをキーに持つリクエストパラメータを取得。キーはformタグ内のname属性を一致
+        //fill関数とsave関数でSQLのデータ取得・追加ができる(fill関数+save関数はcreate関数とほぼ同じ)
+        $post->fill($input)->save(); //fillを使うことで空だったPostインスタンスのプロパティを受け取ったキーごとに上書きできる(fillableに定義されもののみ)
+        //$post->create($input);
+        return redirect('/posts/' . $post->id); //保存したpostのIDを含んだURLにリダイレクト(画面遷移)
     }
 }
