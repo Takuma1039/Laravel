@@ -19,4 +19,7 @@ Route::get('/posts/create', [PostController::class, 'create']);
 ///posts/{post}にGetリクエストが来たら、PostControllerのshowメソッドを実行する
 Route::get('/posts/{post}', [PostController::class, 'show']);
 Route::post('/posts', [PostController::class, 'store']);
-
+//ブログ投稿編集画面の表示
+Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
+//ブログ投稿編集実行
+Route::put('/posts/{post}', [PostController::class, 'update']);

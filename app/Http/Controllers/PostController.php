@@ -13,7 +13,7 @@ class PostController extends Controller
        // $test = $post->orderBy('updated_at', 'DESC')->limit(2)->toSql(); //確認用に追加
        // dd($test); //確認用に追加
         
-        return view("posts.index")->with(['posts' => $post->getPaginateByLimit(1)]);
+        return view("posts.index")->with(['posts' => $post->getPaginateByLimit(5)]);
     }
     
     public function show(Post $post)
@@ -39,6 +39,24 @@ class PostController extends Controller
         //fill関数とsave関数でSQLのデータ取得・追加ができる(fill関数+save関数はcreate関数とほぼ同じ)
         $post->fill($input)->save(); //fillを使うことで空だったPostインスタンスのプロパティを受け取ったキーごとに上書きできる(fillableに定義されもののみ)
         //$post->create($input);
+        return redirect('/posts/' . $post->id); //保存したpostのIDを含んだURLにリダイレクト(画面遷移)
+    }
+    
+    public function edit(Post $post)
+    {
+        //変数の中身の確認
+        //dd($request->all());
+        return view('posts.edit')->with(['post' => $post]);
+    }
+    
+    public function update(Post $post, PostRequest $request)
+    {
+        //変数の中身の確認
+        //dd($request->all());
+        $input_post = $request['post']; //postをキーに持つリクエストパラメータを取得。キーはformタグ内のname属性を一致させること
+        //fill関数とsave関数でSQLのデータ取得・追加ができる(fill関数+save関数はcreate関数とほぼ同じ)
+        $post->fill($input_post)->save(); //fillを使うことで空だったPostインスタンスのプロパティを受け取ったキーごとに上書きできる(fillableに定義されもののみ)
+        //$post->create($input_post);
         return redirect('/posts/' . $post->id); //保存したpostのIDを含んだURLにリダイレクト(画面遷移)
     }
 }
