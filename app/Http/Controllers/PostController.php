@@ -59,4 +59,10 @@ class PostController extends Controller
         //$post->create($input_post);
         return redirect('/posts/' . $post->id); //保存したpostのIDを含んだURLにリダイレクト(画面遷移)
     }
+    
+    public function delete(Post $post)
+    {
+        $post->delete();
+        return redirect('/'); //リダイレクト(画面遷移)
+    }
 }
