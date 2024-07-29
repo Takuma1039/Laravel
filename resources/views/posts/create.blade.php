@@ -16,7 +16,7 @@
             </div>
             <div class="body">
                 <h2>Body</h2>
-                <textarea name="post[body]" placeholder="今日も一日お疲れ様でした。" value="{{ old('post.body') }}"></textarea>　<!--長い文章や改行を許容-->
+                <textarea name="post[body]" placeholder="今日も一日お疲れ様でした。">{{ old('post.body') }}</textarea>　<!--長い文章や改行を許容-->
                 <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p> <!--bodyに関するエラーを取得して表示-->
             </div>
             <input type="submit" value="store"/> <!--クリックしたときにsubmitが含まれるformに対して送信のリクエストが行われる-->
