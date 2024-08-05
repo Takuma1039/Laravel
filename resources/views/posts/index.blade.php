@@ -6,9 +6,13 @@
         <!--Fonts-->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
+    <x-app-layout>
+    <x-slot name="header">
+        　Index
+    </x-slot>
     <body>
         <h1>Blog Name</h1>
-        <a href="/posts/create">create</a>
+        [<a href="/posts/create">create</a>]
         <dev class='posts'>
             @foreach ($posts as $post)
                 <div class='post'>
@@ -26,6 +30,7 @@
                     </form>
                 </div>
             @endforeach
+            <p class='user'>ログインユーザー:{{ Auth::user()->name }}</p>
         </div>
         <div class='paginate'>
             {{ $posts->links() }}
@@ -40,4 +45,5 @@
             }
         </script>
     </body>
+    </x-app-layout>
 </html>

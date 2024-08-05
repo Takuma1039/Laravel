@@ -7,6 +7,10 @@
         <!--Fonts-->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
+    <x-app-layout>
+    <x-slot name="header">
+        　Index
+    </x-slot>
     <body>
         [<a href="/students/create">create</a>]
         <div class='students'>
@@ -38,6 +42,7 @@
             @endforeach
         </div>
     </body>
+    </x-app-layout>
     <script> //javascript
             function deleteStudent(id) {
                 'use strict'

@@ -4,6 +4,10 @@
         <meta charset="utf-8">
         <title>Blog</title>
     </head>
+    <x-app-layout>
+    <x-slot name="header">
+        　Create
+    </x-slot>
     <body>
         <h1>Blog Name</h1>
         <form action="/posts" method="POST"> <!--postsというリソースに対してPOSTリクエストを送信すると、そのリソースに対して登録を行うことができる-->
@@ -33,4 +37,5 @@
             <a href="/">戻る</a>
         </div>
     </body>
+    </x-app-layout>
 </html>

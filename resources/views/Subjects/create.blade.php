@@ -4,6 +4,10 @@
         <meta charset="utf-8">
         <title>Student_Subject</title>
     </head>
+    <x-app-layout>
+    <x-slot name="header">
+        　Create
+    </x-slot>
     <body>
     {{-- 学生情報のフォームと、好きな教科の選択画面 --}}
         <form action="/students" method="POST">
@@ -41,4 +45,5 @@
             <a href="/">back</a>
         </div>
     </body>
+    </x-app-layout>
 </html>
