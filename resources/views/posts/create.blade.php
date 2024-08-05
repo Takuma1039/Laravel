@@ -8,6 +8,14 @@
         <h1>Blog Name</h1>
         <form action="/posts" method="POST"> <!--postsというリソースに対してPOSTリクエストを送信すると、そのリソースに対して登録を行うことができる-->
             @csrf <!--他のサイトからのリクエスト送信などを許容しないため-->
+            <div class="category">
+            <h2>Category</h2>
+            <select name="post[category_id]">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        　　</div>
             <div class="title">
                 <h2>Title</h2>
                 <input type="text" name="post[title]" placeholder="タイトル" value="{{ old('post.title') }}"/>　
