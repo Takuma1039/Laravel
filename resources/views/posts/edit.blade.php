@@ -28,6 +28,8 @@
             </form>
             <div class="footer">
                 <a href="/posts/{{ $post->id }}">戻る</a>
+            </div>
+            <p class='user'>ログインユーザー:{{ Auth::user()->name }}</p>
         </div>
     </body>
     </x-app-layout>

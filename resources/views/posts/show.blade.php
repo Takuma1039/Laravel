@@ -25,9 +25,11 @@
             </div>
         </div>
         <a href="">{{ $post->category->name }}</a>
+        <p>{{ $post->user->name }}</p>
         <div class="footer">
             <a href="/">戻る</a>
         </div>
+        <p class='user'>ログインユーザー:{{ Auth::user()->name }}</p>
     </body>
     </x-app-layout>
 </html>

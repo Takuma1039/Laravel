@@ -44,6 +44,7 @@ class PostController extends Controller
         //変数の中身の確認
         //dd($request->all());
         $input = $request['post']; //postをキーに持つリクエストパラメータを取得。キーはformタグ内のname属性を一致
+        $input += ['user_id' => $request->user()->id];
         //fill関数とsave関数でSQLのデータ取得・追加ができる(fill関数+save関数はcreate関数とほぼ同じ)
         $post->fill($input)->save(); //fillを使うことで空だったPostインスタンスのプロパティを受け取ったキーごとに上書きできる(fillableに定義されもののみ)
         //$post->create($input);
@@ -62,6 +63,7 @@ class PostController extends Controller
         //変数の中身の確認
         //dd($request->all());
         $input_post = $request['post']; //postをキーに持つリクエストパラメータを取得。キーはformタグ内のname属性を一致させること
+        $input_post += ['user_id' => $request->user()->id]; //user()はrequestを送信したユーザーの情報を取得することができる関数
         //fill関数とsave関数でSQLのデータ取得・追加ができる(fill関数+save関数はcreate関数とほぼ同じ)
         $post->fill($input_post)->save(); //fillを使うことで空だったPostインスタンスのプロパティを受け取ったキーごとに上書きできる(fillableに定義されもののみ)
         //$post->create($input_post);

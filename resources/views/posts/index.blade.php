@@ -20,6 +20,7 @@
                         <!--aタグはテキストなどに特定のwebページへ移動するリンクを付ける-->
                         <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                     </h2>
+                    <p><a href='/user'>{{ $post->user->name }}</a></p>
                     <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
                     <p class='body'>{{ $post->body }}</p>
                     <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">

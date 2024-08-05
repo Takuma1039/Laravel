@@ -36,6 +36,7 @@
         <div class="footer">
             <a href="/">戻る</a>
         </div>
+        <p class='user'>ログインユーザー:{{ Auth::user()->name }}</p>
     </body>
     </x-app-layout>
 </html>

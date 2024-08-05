@@ -13,7 +13,7 @@
     <body>
         <h1>Blog Name</h1>
         <a href="/posts/create">create</a>
-        <dev class='posts'>
+        <div class='posts'>
             @foreach ($posts as $post)
                 <div class='post'>
                     <h2 class='title'>
@@ -37,6 +37,7 @@
         <div class="footer">
             <a href="/">戻る</a>
         </div>
+        <p class='user'>ログインユーザー:{{ Auth::user()->name }}</p>
         <script> //javascript
             function deletePost(id) {
                 'use strict'

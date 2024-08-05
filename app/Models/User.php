@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;  //Userクラス定義の前に追加
 
 class User extends Authenticatable
 {
@@ -42,4 +43,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+    
+    public function getOwnPaginateByLimit(int $limit_count = 5)
+    {
+        //find(Auth::id())は現在ログインしているユーザーと同じidのUserインスタンスを取り出している
+        return $this::with('posts')->find(Auth::id())->posts()->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
 }
