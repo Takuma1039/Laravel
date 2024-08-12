@@ -11,27 +11,36 @@
         　Index
     </x-slot>
     <body>
-        <h1>Blog Name</h1>
+        <h1><font size="6">Blog Name</font></h1>
         [<a href="/posts/create">create</a>]
-        <dev class='posts'>
+        <div class='posts'>
             @foreach ($posts as $post)
                 <div class='post'>
                     <h2 class='title'>
                         <!--aタグはテキストなどに特定のwebページへ移動するリンクを付ける-->
-                        <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                        <a href="/posts/{{ $post->id }}"><font size="4">{{ $post->title }}</font></a>
                     </h2>
                     <p><a href='/user'>{{ $post->user->name }}</a></p>
-                    <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
-                    <p class='body'>{{ $post->body }}</p>
+                    <a href="/categories/{{ $post->category->id }}"><font size="4">{{ $post->category->name }}</font></a>
+                    <p class='body'><font size="4">{{ $post->body }}</font></p>
                     <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                         @csrf <!--他のサイトからのリクエスト送信などを許容しないため-->
                         @method('DELETE') <!--DELETEリクエストをFormタグのmethod属性で定義するため-->
                         <!--buttonはデフォルトがsubmitなので、type="button"と定義しない場合、ボタンを押したときに送信されてしまう-->
-                        <button type="button" onclick="deletePost({{ $post->id }})">delete</button>
+                        <button type="button" onclick="deletePost({{ $post->id }})"><font size="3">delete</font></button>
                     </form>
                 </div>
             @endforeach
-            <p class='user'>ログインユーザー:{{ Auth::user()->name }}</p>
+            <p class='user'><font size="5">ログインユーザー:{{ Auth::user()->name }}</font></p>
+        <div>
+            @foreach($questions as $question)
+                <div>
+                    <a href="https://teratail.com/questions/{{ $question['id'] }}">
+                            {{ $question['title'] }}
+                     </a>
+                </div>
+            @endforeach
+        </div>
         </div>
         <div class='paginate'>
             {{ $posts->links() }}
