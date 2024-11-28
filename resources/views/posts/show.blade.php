@@ -6,6 +6,10 @@
         <title>Posts</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </head>
     <x-app-layout>
     <x-slot name="header">
@@ -13,8 +17,9 @@
     </x-slot>
     <body>
         <div class="edit">
-            [<a href="/posts/{{ $post->id }}/edit">edit</a>]
+            <a href="/posts/{{ $post->id }}/edit" class="btn btn-primary btn-sm active" role="button" aria-disabled="true">edit</a>
         </div>
+        <img src="{{ asset('storage/images/' . $post->image) }}" style="width:18rem;" />
         <h1 class="title">
             {{ $post->title }}
         </h1>

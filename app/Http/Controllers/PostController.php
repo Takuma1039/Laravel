@@ -68,6 +68,13 @@ class PostController extends Controller
         //dd($request->all());
         $input = $request['post']; //postをキーに持つリクエストパラメータを取得。キーはformタグ内のname属性を一致
         $input += ['user_id' => $request->user()->id];
+        if($request->hasFile('image')){
+            $image_path = $request->file('image')->store('public/images');
+        } else{
+            $image_path = null;
+        }
+        // 上記処理にて保存した画像に名前を付け、Postテーブルのimageカラムに、格納
+        $post->image = basename($image_path);
         //fill関数とsave関数でSQLのデータ取得・追加ができる(fill関数+save関数はcreate関数とほぼ同じ)
         $post->fill($input)->save(); //fillを使うことで空だったPostインスタンスのプロパティを受け取ったキーごとに上書きできる(fillableに定義されもののみ)
         //$post->create($input);
@@ -87,6 +94,13 @@ class PostController extends Controller
         //dd($request->all());
         $input_post = $request['post']; //postをキーに持つリクエストパラメータを取得。キーはformタグ内のname属性を一致させること
         $input_post += ['user_id' => $request->user()->id]; //user()はrequestを送信したユーザーの情報を取得することができる関数
+        if($request->hasFile('image')){
+            $image_path = $request->file('image')->store('public/images');
+        } else{
+            $image_path = null;
+        }
+        // 上記処理にて保存した画像に名前を付け、Postテーブルのimageカラムに、格納
+        $post->image = basename($image_path);
         //fill関数とsave関数でSQLのデータ取得・追加ができる(fill関数+save関数はcreate関数とほぼ同じ)
         $post->fill($input_post)->save(); //fillを使うことで空だったPostインスタンスのプロパティを受け取ったキーごとに上書きできる(fillableに定義されもののみ)
         //$post->create($input_post);
@@ -96,6 +110,6 @@ class PostController extends Controller
     public function delete(Post $post)
     {
         $post->delete();
-        return redirect('/'); //リダイレクト(画面遷移)
+        return redirect('/'); //リダイレクト(画面遷移)s
     }
 }
