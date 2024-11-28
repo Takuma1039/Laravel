@@ -110,6 +110,6 @@ class PostController extends Controller
     public function delete(Post $post)
     {
         $post->delete();
-        return redirect('/'); //リダイレクト(画面遷移)s
+        return redirect('/'); //リダイレクト(画面遷移)
     }
 }
